@@ -2,8 +2,10 @@ import React from 'react'
 import "./Header.css"
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchIcon from '@mui/icons-material/Search';
+
 function Header() {
   return (
+   <>
     <div className='header'>
         <img className='header__logo' src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" />
         <div className='header__search'>
@@ -27,8 +29,11 @@ function Header() {
                     <ShoppingBasketIcon className ="header__basket"/>
                     <span className='header__basketCount'>0</span>
                 </div>
+                  
         </div>
     </div>
+   
+   </>
   )
 }
 
