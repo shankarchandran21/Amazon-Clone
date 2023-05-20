@@ -1,6 +1,26 @@
 import React from 'react'
 import "./product.css"
-function Product({title,price,rating,image}) {
+import { useGlobalContext } from '../../Context/Context'
+
+
+
+
+
+function Product({id,title,price,rating,image}) {
+const {dispatch} = useGlobalContext()
+
+
+
+  const addToBasket = ()=>{
+   const item ={
+    id,
+    title,
+    image,
+    price,
+    rating
+   }
+    dispatch({type:"ADD_TO_Basket",item})
+}
   return (
     <div className='product'>
       <div className="product__info">
@@ -17,7 +37,7 @@ function Product({title,price,rating,image}) {
         </div>
       </div>
       <img src={image} alt="Product" />
-      <button type='button'>Add to Basket</button>
+      <button onClick={addToBasket} type='button'>Add to Basket</button>
     </div>
   )
 }

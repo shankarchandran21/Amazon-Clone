@@ -8,25 +8,10 @@ function App() {
   return (
     <>
       <div>
+        <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <Home />
-              </>
-            }
-          />
-          <Route
-            path="/checkout"
-            element={
-              <>
-                <Header />
-                <Checkout />
-              </>
-            }
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<div>Erorr Page</div>} />
         </Routes>
       </div>
