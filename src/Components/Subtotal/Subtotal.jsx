@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './subtotal.css'
 import CurrencyFormat from 'react-currency-format';
+import { useGlobalContext } from '../../Context/Context';
 
 function Subtotal() {
+    const {basket} = useGlobalContext()
+    const totalPrise = useMemo(()=>{
+      return basket?.reduce((amount,item)=>item.price + amount,0);
+    },[basket])
+
     
   return (
     <div className='subtotal'>
@@ -10,7 +16,7 @@ function Subtotal() {
             renderText={(value)=>(
                 <>
                     <p>
-                        Subtotal (0 items):<strong>0</strong>
+                        Subtotal ({basket.length} items):<strong>{value}</strong>
                     </p>  
                     <small className='subtotal__gift'>
                         <input  type="checkbox"  />This order Contains a gift
@@ -18,7 +24,7 @@ function Subtotal() {
                 </>
             )}
             decimalScale={2}
-            value={0}
+            value={totalPrise}
             displayType={"text"}
             thousandSeparator={true}
             prefix={'$'}

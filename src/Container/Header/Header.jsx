@@ -3,8 +3,10 @@ import "./Header.css"
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../Context/Context';
 
 function Header() {
+    const {basket} =useGlobalContext()
   return (
    <>
     <div className='header'>
@@ -31,7 +33,7 @@ function Header() {
                 <Link to='/checkout'>
                   <div className='header__optionBasket'>
                     <ShoppingBasketIcon className ="header__basket"/>
-                    <span className='header__basketCount'>0</span>
+                    <span className='header__basketCount'>{basket?.length}</span>
                 </div>
                 </Link>
                   

@@ -30,7 +30,7 @@ const {dispatch} = useGlobalContext()
           <strong>{price}</strong>
         </p>
         <div className='product__rating'>
-          {Array(rating).fill(rating).map((_,index)=>(
+          {Array(rating).fill().map((_,index)=>(
             <p key={index}>⭐</p>
           ))}
 

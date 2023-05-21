@@ -1,7 +1,11 @@
 import React from 'react'
 import "./checkout.css"
 import Subtotal from '../../Components/Subtotal/Subtotal'
+import { useGlobalContext } from '../../Context/Context'
+import CheckoutProduct from '../../Components/CheckoutProduct/CheckoutProduct'
 function Checkout() {
+  const {basket} = useGlobalContext()
+
   return (
     <div className='checkout'>
       <div className="checkout__left">
@@ -10,6 +14,7 @@ function Checkout() {
             <h2 className='checkout__title'>
               Your Shopping Basket
             </h2>
+              {basket.map((items)=><CheckoutProduct {...items}/>)}
           </div>
       </div>
       <div className='checkout__right'>
