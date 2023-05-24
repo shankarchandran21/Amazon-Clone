@@ -44,6 +44,10 @@
     margin:0 10px ;
     color: white;
 }
+.header__nav a{
+    text-decoration: none !important;
+
+}
 .header__optionLineOne{
     font-size: 10px;
 }
