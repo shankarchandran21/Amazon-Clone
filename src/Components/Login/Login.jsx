@@ -10,6 +10,15 @@ function Login() {
  
 const signIn = e=>{
     e.preventDefault();
+    auth.signInWithEmailAndPassword(email,password).then((auth)=>{
+         navigate('/')
+        setEmail('')
+        setPassword('')
+    }).catch(err=>{
+        // setEmail('')
+        // setPassword('')
+        alert(err.message)
+    })
 }
 
 const register = e=>{
@@ -17,7 +26,13 @@ const register = e=>{
     auth.createUserWithEmailAndPassword(email,password).then((auth)=>{
         console.log(auth)
         navigate('/')
-    }).catch(err=>alert(err.message))
+        setEmail('')
+        setPassword('')
+    }).catch(err=>{
+        // setEmail('')
+        // setPassword('')
+        alert(err.message)
+    })
 
 }
 
@@ -37,7 +52,7 @@ const register = e=>{
 
                 <h5>Password</h5>
                 <input type="password" name='password' value={password} onChange={e=>setPassword(e.target.value)}/>
-                <button type='submit' onChange={signIn} className='login__signInButton'>Sign In</button>
+                <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
             </form>
             <p>
                   By signing-in you agree to the AMAZON FAKE CLONE Conditions of Use & Sale. Please

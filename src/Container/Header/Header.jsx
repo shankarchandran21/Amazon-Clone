@@ -4,9 +4,18 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../Context/Context';
+import { auth } from '../../firebase';
 
 function Header() {
-    const {basket} =useGlobalContext()
+    const {basket,user} =useGlobalContext()
+
+  const SignOutUser =()=>{
+    if(user){
+      auth.signOut()
+    }
+  }
+
+
   return (
    <>
     <div className='header'>
@@ -18,10 +27,10 @@ function Header() {
             <SearchIcon  className='header__searchIcon'/>
         </div>
         <div className='header__nav'>
-                  <Link to='/login'>
-                   <div className="header__option">
-                    <span className='header__optionLineOne'>Hellow Guest</span>
-                    <span className='header__optionTwo'>Sign In</span>
+                  <Link to={!user&& '/login'}>
+                   <div onClick={SignOutUser} className="header__option">
+                    <span className='header__optionLineOne'>Hellow {!user ? 'Guest' : user.email.replace(/@.*/, '')}</span>
+                    <span className='header__optionTwo'>{user?'SignOut':'SignIn'}</span>
                   </div>
                   </Link>
                 <div className="header__option">

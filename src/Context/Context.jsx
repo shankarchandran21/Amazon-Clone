@@ -7,6 +7,7 @@ const GlobalContext = createContext()
 export const useGlobalContext =()=>useContext(GlobalContext)
 const initialState ={
     basket:[],
+    user:null,
 }
 
 
