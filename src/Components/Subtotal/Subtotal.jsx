@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import './subtotal.css'
 import CurrencyFormat from 'react-currency-format';
 import { useGlobalContext } from '../../Context/Context';
+import { useNavigate } from 'react-router-dom';
 
 function Subtotal() {
     const {basket} = useGlobalContext()
@@ -9,7 +10,7 @@ function Subtotal() {
       return basket?.reduce((amount,item)=>item.price + amount,0);
     },[basket])
 
-    
+    const navigate = useNavigate()
   return (
     <div className='subtotal'>
         <CurrencyFormat
@@ -29,7 +30,11 @@ function Subtotal() {
             thousandSeparator={true}
             prefix={'$'}
         />
-        <button>Proceed to Checkout</button>
+        <button onClick={()=>{
+            if(totalPrise>0){
+                navigate('/payment')
+            }
+        }}>Proceed to Checkout</button>
     </div>
   )
 }

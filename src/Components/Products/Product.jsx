@@ -1,7 +1,7 @@
 import React from 'react'
 import "./product.css"
 import { useGlobalContext } from '../../Context/Context'
-
+import {ADD_TO_Basket} from "../../reducer/Action"
 
 
 
@@ -19,7 +19,7 @@ const {dispatch} = useGlobalContext()
     price,
     rating
    }
-    dispatch({type:"ADD_TO_Basket",item})
+    dispatch({type:ADD_TO_Basket,item})
 }
   return (
     <div className='product'>
@@ -36,7 +36,7 @@ const {dispatch} = useGlobalContext()
 
         </div>
       </div>
-      <img src={image} alt="Product" />
+      <img src={image} alt="Product" className='product__image' />
       <button onClick={addToBasket} type='button'>Add to Basket</button>
     </div>
   )

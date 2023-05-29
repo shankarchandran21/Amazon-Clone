@@ -1,12 +1,14 @@
+import { ADD_TO_Basket, REMOVE_FROM_BASKET, SET_USER } from "./Action";
+
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_Basket":
+    case ADD_TO_Basket:
       return {
         ...state,
         basket: [...state.basket, action.item],
       };
 
-    case "REMOVE_FROM_BASKET":
+    case REMOVE_FROM_BASKET:
       // return {
       //   ...state,
       //   basket: state.basket.filter((item) => item.id !== action.id),
@@ -23,7 +25,7 @@ export const reducer = (state, action) => {
       }
       return { ...state, basket: newBasket };
 
-    case "SET_USER":
+    case SET_USER:
       return { ...state, user: action.user };
   }
 

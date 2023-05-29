@@ -1,12 +1,12 @@
 import React from 'react'
 import "./checkoutProduct.css"
 import { useGlobalContext } from '../../Context/Context'
-
+import {REMOVE_FROM_BASKET} from '../../reducer/Action'
 
 function CheckoutProduct({id,image,title,price,rating}) {
   const {dispatch} = useGlobalContext()
   const removeFromBasket = ()=>{
-    dispatch({type:'REMOVE_FROM_BASKET',id})
+    dispatch({type:REMOVE_FROM_BASKET,id})
   }
 
   return (

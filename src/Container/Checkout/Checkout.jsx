@@ -3,6 +3,8 @@ import "./checkout.css"
 import Subtotal from '../../Components/Subtotal/Subtotal'
 import { useGlobalContext } from '../../Context/Context'
 import CheckoutProduct from '../../Components/CheckoutProduct/CheckoutProduct'
+
+
 function Checkout() {
   const {basket,user} = useGlobalContext()
 
@@ -15,7 +17,8 @@ function Checkout() {
             <h2 className='checkout__title'>
               Your Shopping Basket
             </h2>
-              {basket.map((items)=><CheckoutProduct {...items}/>)}
+                {basket.map((items,index)=><CheckoutProduct key={index} {...items}/>)}
+          
           </div>
       </div>
       <div className='checkout__right'>
